@@ -12,7 +12,7 @@ const users = [
 ];
 
 /**
- * Retourne les utilisateurs dont l'âge est inférieur ou égale à "criteria"
+ * Retourne les utilisateurs dont l'âge est inférieur ou égal à "criteria"
  * @param array
  * @param criteria
  * @returns {*}
