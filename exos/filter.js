@@ -1,5 +1,5 @@
 /**
- *  J'ai utilisé l'IA uniquement pour générer la liste d'utilisateurs
+ * J'ai utilisé l'IA uniquement pour générer la liste de users
  */
 const users = [
     { id: 1, name: "Alice Dupont", age: 28, email: "alice.dupont@gmail.com", role: "admin" },
@@ -15,26 +15,27 @@ const users = [
 ];
 
 /**
- * Retourne les utilisateurs dont l'âge est inférieur ou égal à "criteria"
+ * Retourne les utilisateurs dont l'âge est inférieur ou égale à "criteria"
  */
-function filterByAge(users, criteria){
-    return users.filter(user => user.age <= criteria);
+function filterByAge(array, criteria){
+    return array.filter(user => user.age <= criteria);
 }
 
 /**
  * Retourne les utilisateurs dont l'adresse email contient "domain"
  */
-function filterByEmailDomain(users, domain){
-    return users.filter(user => user.email.includes(domain));
+function filterByEmailDomain(array, domain){
+    return array.filter(user => user.email.includes(domain));
 }
 
 /**
  * Retourne les utilisateurs qui ont le rôle "role"
  */
-function filterByRole(users, role){
-    return users.filter(user => user.role.toLowerCase() === role.toLowerCase());
+function filterByRole(array, role){
+    return array.filter(user => user.role.toLowerCase() === role.toLowerCase());
 }
 
 console.log("Filtre par âge : ",filterByAge(users, 30));
 console.log("\nFiltre par email : ", filterByEmailDomain(users, 'free'));
-console.log("\nFiltre par rôle: ", filterByRole(users, "moderator"));
+console.log("\nFiltre par rôle : ", filterByRole(users, "moderator"));
+
