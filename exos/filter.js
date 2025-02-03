@@ -15,7 +15,7 @@ const users = [
 ];
 
 /**
- * Retourne les utilisateurs dont l'âge est inférieur ou égale à "criteria"
+ * Retourne les utilisateurs dont l'âge est inférieur ou égal à "criteria"
  */
 function filterByAge(array, criteria){
     return array.filter(user => user.age <= criteria);
