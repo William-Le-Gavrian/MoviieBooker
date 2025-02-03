@@ -43,5 +43,5 @@ function filterByRole(array, role){
 
 console.log("Filtre par âge : ",filterByAge(users, 30));
 console.log("\nFiltre par email : ", filterByEmailDomain(users, 'free'));
-console.log("\nLes modérateurs : ", filterByRole(users, "moderator"));
+console.log("\nFiltre par rôle : ", filterByRole(users, "moderator"));
 
