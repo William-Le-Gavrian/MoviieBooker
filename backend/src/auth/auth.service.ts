@@ -3,14 +3,14 @@ import {UsersService} from "../users/users.service";
 import {User} from "../users/entities/user.entity";
 import {RegisterDto} from "../users/dto/register.dto";
 import * as bcrypt from 'bcrypt';
-import {InjectRepository} from "@nestjs/typeorm";
-import {Repository} from "typeorm";
 import {LoginDto} from "../users/dto/login.dto";
+import {JwtService} from '@nestjs/jwt'
 
 @Injectable()
 export class AuthService {
     constructor(
-        private usersService: UsersService
+        private usersService: UsersService,
+        private jwtService: JwtService
     ) {}
 
     async register(registerDto: RegisterDto): Promise<User> {
@@ -30,7 +30,7 @@ export class AuthService {
         }
     }
 
-    async login(loginDto: LoginDto): Promise<User> {
+    async login(loginDto: LoginDto): Promise<{access_token: string}> {
         const {email, password} = loginDto;
 
         const user = await this.usersService.findOne(email);
@@ -43,8 +43,13 @@ export class AuthService {
             throw new UnauthorizedException("Invalid password");
         }
 
-        return{
-            ...user
+        const payload = {
+            sub: user.id,
+            email: user.email,
+        }
+
+        return {
+            access_token: await this.jwtService.signAsync(payload)
         }
     }
 }
