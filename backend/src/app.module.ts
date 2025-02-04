@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import {User} from "./users/entities/user.entity";
 import {ConfigModule} from "@nestjs/config";
+import { MoviesModule } from './movies/movies.module';
 
 @Module({
   imports: [
@@ -21,7 +22,8 @@ import {ConfigModule} from "@nestjs/config";
           synchronize: true,
       }),
       AuthModule,
-      UsersModule
+      UsersModule,
+      MoviesModule
   ],
   controllers: [AppController],
   providers: [AppService],
