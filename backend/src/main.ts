@@ -14,6 +14,13 @@ async function bootstrap() {
       .setDescription("The Best Movie Booker in the World !")
       .setVersion("1.0")
       .addTag('auth')
+      .addBearerAuth({
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'Authorization',
+        in: 'header'
+      }, 'JWT-auth')
       .build();
 
   const document = SwaggerModule.createDocument(app, config);

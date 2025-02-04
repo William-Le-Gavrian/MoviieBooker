@@ -1,10 +1,10 @@
-import {Body, Controller, Get, HttpCode, HttpStatus, Post, UseGuards, Request, Param} from '@nestjs/common';
+import {Body, Controller, Get, HttpCode, HttpStatus, Post, UseGuards, Param} from '@nestjs/common';
 import {AuthService} from "./auth.service";
 import {RegisterDto} from "../users/dto/register.dto";
 import {LoginDto} from "../users/dto/login.dto";
 import { Public } from './public.decorator';
 import { JwtAuthGuard } from './jwt-auth.guard';
-import {ApiBody, ApiOperation, ApiResponse, ApiTags} from "@nestjs/swagger";
+import {ApiBearerAuth, ApiBody, ApiOperation, ApiResponse, ApiTags} from "@nestjs/swagger";
 import {UsersService} from "../users/users.service";
 
 @ApiTags('Auth')
@@ -79,6 +79,7 @@ export class AuthController {
     @HttpCode(HttpStatus.OK)
     @UseGuards(JwtAuthGuard)
     @Get('user/:id')
+    @ApiBearerAuth('JWT-auth')
     @ApiOperation({ summary: 'Get user details by ID' })
     @ApiResponse({
         status: HttpStatus.OK,
@@ -87,7 +88,6 @@ export class AuthController {
             example: {
                 id: 1,
                 email: 'test@test.com',
-                // Ajoute d'autres propriétés de l'utilisateur si nécessaire
             },
         },
     })
