@@ -5,6 +5,8 @@ import { UsersModule } from './users/users.module';
 import {User} from "./users/entities/user.entity";
 import {ConfigModule} from "@nestjs/config";
 import { MoviesModule } from './movies/movies.module';
+import { ReservationModule } from './reservation/reservation.module';
+import {Reservation} from "./reservation/entities/reservation.entity";
 
 @Module({
   imports: [
@@ -16,12 +18,13 @@ import { MoviesModule } from './movies/movies.module';
           username: process.env.DB_USERNAME,
           password: process.env.DB_PASSWORD,
           database: process.env.DB_NAME,
-          entities: [User],
+          entities: [User, Reservation],
           synchronize: true,
       }),
       AuthModule,
       UsersModule,
-      MoviesModule
+      MoviesModule,
+      ReservationModule
   ],
   controllers: [],
   providers: [],
