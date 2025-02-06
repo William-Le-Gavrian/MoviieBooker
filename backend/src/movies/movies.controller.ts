@@ -10,7 +10,6 @@ export class MoviesController {
 
     constructor(private readonly moviesService: MoviesService) {}
 
-    @UseGuards(JwtAuthGuard)
     @Get()
     @ApiOperation({ summary: 'Retrieve movies filtered by page, title or different types of sorts' })
     @ApiQuery({ name: 'page', required: false, type: Number, description: 'Number of pages for pagination (default : 1)' })

@@ -1,0 +1,21 @@
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    list-style: none;
+
+    .btn-menu a{
+        padding: 1rem 1.25rem;
+        border: 1px solid cornflowerblue;
+        background-color: cornflowerblue;
+        border-radius: 999px;
+        text-decoration: none;
+        color: white;
+
+        &:hover{
+            background-color: transparent;
+            color: cornflowerblue;
+        }
+    }
+}
