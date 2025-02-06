@@ -44,7 +44,15 @@ export class ReservationService {
                 user: user,
             });
 
-            return await this.reservationRepository.save(reservation);
+            if(!user.reservations){
+                user.reservations = [];
+            }
+            user.reservations.push(reservation);
+
+            await this.reservationRepository.save(reservation);
+            await this.reservationRepository.manager.save(reservation);
+
+            return reservation;
         } catch (error) {
             throw new ConflictException(error);
         }

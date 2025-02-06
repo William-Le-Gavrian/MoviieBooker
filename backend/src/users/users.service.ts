@@ -13,10 +13,6 @@ export class UsersService {
     ) {
     }
 
-    findAll(): Promise<User[]> {
-        return this.userRepository.find();
-    }
-
     async findOneById(id: number): Promise<User> {
         const user = await this.userRepository.findOne({
             where: { id },
@@ -29,10 +25,6 @@ export class UsersService {
 
     findOneByEmail(email: string): Promise<User | null> {
         return this.userRepository.findOneBy({ email })
-    }
-
-    async remove(id: number): Promise<void> {
-        await this.userRepository.delete(id);
     }
 
     create(registerDto: RegisterDto): Promise<User> {

@@ -103,8 +103,28 @@ export class AuthController {
         return this.usersService.findOneById(Number(id));
     }
 
-    @Get()
+    @Get('me')
     @UseGuards(JwtAuthGuard)
+    @ApiBearerAuth('JWT-auth')
+    @ApiOperation({ summary: 'Get currently logged-in user details' })
+    @ApiResponse({
+        status: HttpStatus.OK,
+        description: 'Successfully fetched the currently logged-in user details',
+        schema: {
+            example: {
+                id: 1,
+                email: 'test@test.com',
+            },
+        },
+    })
+    @ApiResponse({
+        status: HttpStatus.UNAUTHORIZED,
+        description: 'Unauthorized access, invalid or expired token',
+    })
+    @ApiResponse({
+        status: HttpStatus.NOT_FOUND,
+        description: 'User not found',
+    })
     async getConnectedUser(@Request() req){
         return await this.usersService.findOneById(req.user.id);
     }
