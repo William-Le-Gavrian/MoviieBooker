@@ -1,0 +1,64 @@
+.movies-container{
+    padding: 2rem;
+
+    h2{
+        font-size: 3rem;
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    .filters-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+
+        .search-container{
+
+            input{
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    .movies-list{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+
+        h3, h4, h5{
+            margin: 0.5rem 0;
+        }
+
+        .movie-card{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 2px solid black;
+            border-radius: 1rem;
+            width: fit-content;
+            padding: 1rem 0;
+
+            .movie-poster{
+                width: 300px;
+                border-radius: 10px;
+            }
+
+            .overview{
+                font-size: 0.9rem;
+                margin: 0 2rem;
+                padding: 0;
+            }
+        }
+    }
+
+    .pagination{
+        text-align: center;
+        padding: 1rem;
+
+        button{
+            margin: 0 2rem;
+        }
+    }
+}

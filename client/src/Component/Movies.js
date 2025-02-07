@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Reservation from "./Reservation";
-import '../styles/Movies.css'
+import '../styles/movies.css'
 
 const Movies = () => {
     const [user, setUser] = useState({});
@@ -73,28 +73,29 @@ const Movies = () => {
     return (
         <div className="movies-container">
             <h2>Liste des films</h2>
-            {user && <h3>{user.email}</h3>} {/* Affichage de l'email utilisateur seulement si connecté */}
-            <div>
-                <input
-                    type="text"
-                    value={search}
-                    onChange={handleSearchChange}
-                    placeholder="Rechercher des films"
-                />
-            </div>
+            {user && <h3>{user.email}</h3>}
+            <div className="filters-container">
+                <div className="search-container">
+                    <input
+                        type="text"
+                        value={search}
+                        onChange={handleSearchChange}
+                        placeholder="Rechercher des films"
+                    />
+                </div>
 
-            <div>
-                <select onChange={handleSortChange} value={sort}>
-                    <option value="">Trier par</option>
-                    <option value="popularity.asc">Popularité croissante</option>
-                    <option value="popularity.desc">Popularité décroissante</option>
-                    <option value="release_date.asc">Date de sortie croissante</option>
-                    <option value="release_date.desc">Date de sortie décroissante</option>
-                </select>
+                <div className="sort-container">
+                    <select onChange={handleSortChange} value={sort}>
+                        <option value="">Trier par</option>
+                        <option value="popularity.asc">Popularité croissante</option>
+                        <option value="popularity.desc">Popularité décroissante</option>
+                        <option value="release_date.asc">Date de sortie croissante</option>
+                        <option value="release_date.desc">Date de sortie décroissante</option>
+                    </select>
+                </div>
             </div>
-
             {loading && <p>Chargement...</p>}
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {error && <p style={{color: 'red'}}>{error}</p>}
 
             <div className="movies-list">
                 {movies.length === 0 ? (
@@ -108,14 +109,14 @@ const Movies = () => {
                                 className="movie-poster"
                             />
                             <h3>{movie.title}</h3>
-                            <h4>ID du film : {movie.id}</h4>
-                            <p>{movie.overview}</p>
+                            <h4>Popularité : {movie.popularity}</h4>
+                            <h5>ID du film : {movie.id}</h5>
+                            <p className="overview">{movie.overview}</p>
                         </div>
                     ))
                 )}
             </div>
 
-            {/* Pagination */}
             <div className="pagination">
                 <button onClick={() => handlePageChange(page - 1)} disabled={page <= 1}>
                     Précédent

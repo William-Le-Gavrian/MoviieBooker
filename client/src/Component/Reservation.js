@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import "../styles/reservation.css"
 
 const Reservation = () => {
     const [movieId, setMovieId] = useState('');
@@ -47,8 +48,8 @@ const Reservation = () => {
         <div>
             <h2>Réserver un film</h2>
             {error && <p style={{ color: 'red' }}>{error}</p>}
-            <form onSubmit={handleSubmit}>
-                <div>
+            <form className="form-container" onSubmit={handleSubmit}>
+                <div className="film-id">
                     <label>ID du film</label>
                     <input
                         type="number"
@@ -58,7 +59,7 @@ const Reservation = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className="date-reservation">
                     <label>Date et Heure de réservation</label>
                     <input
                         type="datetime-local"
