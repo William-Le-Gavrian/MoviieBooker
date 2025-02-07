@@ -57,12 +57,12 @@ const Movies = () => {
 
     const handleSearchChange = (e) => {
         setSearch(e.target.value);
-        setPage(1); // Réinitialiser à la première page lors de la recherche
+        setPage(1);
     };
 
     const handlePageChange = (newPage) => {
         if (newPage > 0 && newPage <= totalPages) {
-            setPage(newPage); // Changer de page
+            setPage(newPage);
         }
     };
 

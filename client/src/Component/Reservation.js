@@ -20,7 +20,7 @@ const Reservation = () => {
 
         const reservationData = {
             movieId: Number(movieId),
-            timeStart: timeStart, // Le format de la date doit être un ISO string, par exemple '2025-02-05T20:00:00'
+            timeStart: timeStart,
         };
 
         try {

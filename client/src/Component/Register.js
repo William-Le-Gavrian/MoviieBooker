@@ -1,7 +1,7 @@
 import {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import "../styles/auth.css"
 
 const Register = () => {
     const [email, setEmail] = useState('');
@@ -29,27 +29,27 @@ const Register = () => {
     }
 
     return (
-        <div>
+        <div className="authentication">
             <h2>Inscription</h2>
             {error && <p style={{color: 'red'}}>{error}</p>}
-            <form onSubmit={handleSubmit}>
-                <div>
+            <form className="auth-form" onSubmit={handleSubmit}>
+                <div className="email-input-container">
                     <label>Email</label>
                     <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Email"
+                        placeholder="exemple@mail.com  "
                         required
                     />
                 </div>
-                <div>
+                <div className="password-input-container">
                     <label>Mot de passe</label>
                     <input
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Password"
+                        placeholder="test1234"
                         required
                     />
                 </div>
